@@ -22,6 +22,7 @@ public class HttpServerConnection {
 
             conn.setConnectTimeout(timeOut);
             conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
             conn.setDoInput(true);
 
             conn.connect();

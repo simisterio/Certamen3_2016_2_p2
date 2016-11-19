@@ -3,6 +3,8 @@ package cl.telematica.android.certamen3_p2;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONObject;
+
 /**
  * Created by franciscocabezas on 11/18/16.
  */
@@ -38,6 +40,7 @@ public class Show implements Parcelable {
     public void setShowTitle(String showTitle) {
         this.showTitle = showTitle;
     }
+
 
     @Override
     public int describeContents() {

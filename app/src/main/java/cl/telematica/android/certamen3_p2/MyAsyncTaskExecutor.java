@@ -2,6 +2,9 @@ package cl.telematica.android.certamen3_p2;
 
 import android.os.AsyncTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by franciscocabezas on 11/18/16.
  */
@@ -27,7 +30,9 @@ public class MyAsyncTaskExecutor {
 
             @Override
             protected String doInBackground(Void... params) {
-                String resultado = new HttpServerConnection().connectToServer("http://www.mocky.io/v2/582f1759260000171165f0b6" + "?data=" + textToSend, 15000);
+                //String strJson = toJSON(textToSend);
+                String resultado = new HttpServerConnection().connectToServer(/*"http://www.mocky.io/v2/582f1759260000171165f0b6"*/
+                                                                           "http://localhost:3000/api/clients" + "?data=" + textToSend, 15000);
                 return resultado;
             }
 
@@ -43,5 +48,14 @@ public class MyAsyncTaskExecutor {
 
         task.execute();
     }
-
+    public String toJSON(String nombre){
+        JSONObject jsonObject = new JSONObject();
+        try{
+            jsonObject.put("show" , nombre);
+            return jsonObject.toString();
+        }catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
